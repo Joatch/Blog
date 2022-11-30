@@ -1,0 +1,10 @@
+<form action="" method="post"> {% csrf_token %}
+
+    <h3>Ponga su juego!</h3>
+
+    <table>
+        {{formulario.as_table}}
+    </table>
+
+    <button type='submit' value='Enviar'>Enviar</button>
+</form>
