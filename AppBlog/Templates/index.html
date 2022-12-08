@@ -20,7 +20,22 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'Registrarse' %}" >Crear un usuario</a>
+                <a class="navbar-brand" href="{% url 'Sign Up' %}" >Crear un usuario</a>
+                
+                {% if not request.user.is_authenticated %}
+                <a class="navbar-brand" href="{% url 'Login' %}" >Iniciar Sesión</a>
+                {% endif %}
+
+                {% if request.user.is_authenticated %}
+                <a class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}}!</a>
+
+                <img src='{{url}}' alt=''>
+
+                <a class="navbar-brand" href="{% url 'Logout' %}" >Cerrar Sesión</a>
+                <a class="navbar-brand" href="{% url 'Editar Usuario' %}" >Editar Usuario</a>
+                {% endif %}
+
+                
             </div>
         </nav>
         <!-- Masthead-->
@@ -30,7 +45,8 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Este es el blog personal de Joaquin Anton Leporace. Esto es como Twitter, ¡pero mejor!</h1>
+                            <h1 class="mb-5"> Bienvenido {{user.username}}!</h1>
+                            <h2 class="mb-5">Este es el blog personal de Joaquin Anton Leporace. Esto es como Twitter, ¡pero mejor!</h2>
                             <!-- Signup form-->
                             <a class="btn btn-primary" href="{% url 'Agregar Libro' %}" >Agregar Libro</a>
                             <a class="btn btn-primary" href="{% url 'Agregar Juego' %}" >Agregar Juego</a>
@@ -72,7 +88,13 @@
                         <ul class="list-inline mb-2">
 
                         </ul> 
-                        <p class="text-muted small mb-4 mb-lg-0">El proposito de esta pagina es hacer público los gustos de cada persona. Ya sea libros, peliculas o series, todo va a estar plasmado en esta pagina, donde cada uno va a poder comentar y mostrar lo que piensa, ¡sin prejuicios! </p>
+                        <p class="text-muted small mb-4 mb-lg-0">El proposito de esta pagina es que uno pueda anotar sus series favoritas, para que uno no se olvide de todo lo que ve, lea o juega. De esta forma, cuando te pregunten si conoces algun juego, libro, serie o película interesante, uno pueda tener una respuesta. ¡Página perfecta para los olvidadizos! </p>
+                        <a class="btn btn-primary" href="{% url 'Mostrar Libros' %}" >Mostrar Libro</a>
+                        <div class='container'>
+                            <a class='btn btn-primary' href='{% url 'List Libros' %}'> Mostrar cursitos</a>
+                        <a class="btn btn-primary" href="{% url 'Mostrar Juegos' %}" >Mostrar Juego</a>
+                        <a class="btn btn-primary" href="{% url 'Mostrar Series' %}" >Mostrar Serie</a>
+                        <a class="btn btn-primary" href="{% url 'Mostrar Peliculas' %}" >Mostrar Pelicula</a>
                     </div>
                             </li>
                         </ul>

@@ -1,0 +1,29 @@
+<h1>Estos son mis peliculas favoritas!</h1>
+
+{% if Peliculas.all %}
+
+{% for Peliculas in Peliculas%}
+
+    <p> 
+        id: {{Peliculas.id}} ;
+        Nombre: {{Peliculas.nombre}} ; Genero: {{Peliculas.genero}}</p>
+
+        <button>
+            <a href='{% url 'Eliminar Pelicula' pelicula_id=Peliculas.id %}' >Eliminar</a>
+        </button>
+
+        <button>
+            <a href='{% url 'Actualizar Pelicula' pelicula_id=Peliculas.id %}' >Actualizar</a>
+        </button>
+
+{% endfor %}
+
+{% else %}
+
+        No hay nada todavía, ¿Querrías agregar algo? Vuelve a la pagina principal, ve a la sección de Agregar Peliculas y añade uno.
+
+{% endif %}
+
+<button>
+    <a href='{% url 'Home' %}' >Volver a la pagina principal</a>
+</button>

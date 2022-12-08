@@ -1,0 +1,15 @@
+<h1>Estos son los libros favoritos de la gente!</h1>
+
+{% for Libros in object_list %}
+
+    <ul>
+        <li>
+            {{libros}}
+
+            <button>
+                <a href='{% url 'Eliminar Libro' libro_id=Libros.id %}' >Eliminar</a>
+            </button>
+        </li>
+    </ul>
+
+{% endfor %}

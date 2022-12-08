@@ -1,0 +1,10 @@
+<h1> Editar perfil de {{usuario}} </h1>
+
+<form action="" method="post"> {% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+
+    <button type='submit' value='Enviar'>Enviar</button>
+</form>

@@ -1,0 +1,31 @@
+<h1>Estos son mis libros favoritos!</h1>
+
+{% if Libros.all %}
+
+{% for Libros in Libros%}
+
+    <p>
+        id: {{Libros.id}} ;
+        Nombre: {{Libros.nombre}} ; Autor: {{Libros.autor}} ; Genero: {{Libros.genero}}</p>
+
+        <button>
+            <a href='{% url 'Eliminar Libro' libro_id=Libros.id %}' >Eliminar</a>
+        </button>
+
+        <button>
+            <a href='{% url 'Actualizar Libro' libro_id=Libros.id %}' >Actualizar</a>
+        </button>
+
+{% endfor %}
+
+{% else %}
+
+        No hay nada todavía, ¿Querrías agregar algo? Vuelve a la pagina principal, ve a la sección de Agregar Libros y añade uno.
+
+{% endif %}
+
+
+
+<button>
+    <a href='{% url 'Home' %}' >Volver a la pagina principal</a>
+</button>
