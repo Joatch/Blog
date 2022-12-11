@@ -102,7 +102,7 @@ class LibrosList (LoginRequiredMixin,ListView):
 
 class LibrosUpdate (LoginRequiredMixin,UpdateView):
     model = Libros
-    success_url = 'List Libros'
+    success_url = '/librolist'
     fields = ['nombre', 'autor', 'genero']
 
 class LibrosDelete (LoginRequiredMixin, DeleteView):

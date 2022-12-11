@@ -11,7 +11,6 @@ class Juegos(models.Model):
     nombre = models.CharField(max_length=40)
     creador = models.CharField(max_length=40)
     genero = models.CharField(max_length=40)
-    likes = models.ManyToManyField (User, related_name='likes_juegos')
     def __str__(self):
         return f'Nombre: {self.nombre}, Creador: {self.creador}, Genero: {self.genero}' 
 
@@ -19,7 +18,6 @@ class Juegos(models.Model):
 class Series(models.Model):
     nombre = models.CharField(max_length=40)
     genero = models.CharField(max_length=40)
-    likes = models.ManyToManyField (User, related_name='likes_series')
     def __str__(self):
         return f'Nombre: {self.nombre}, Genero: {self.genero}' 
 
@@ -27,7 +25,6 @@ class Series(models.Model):
 class Peliculas(models.Model):
     nombre = models.CharField(max_length=40)
     genero = models.CharField(max_length=40)
-    likes = models.ManyToManyField (User, related_name='likes_peliculas')
     def __str__(self):
         return f'Nombre: {self.nombre}, Genero: {self.genero}' 
 
