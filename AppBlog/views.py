@@ -100,10 +100,22 @@ class LibrosList (LoginRequiredMixin,ListView):
     model = Libros
     template_name = 'list_libros.html'
 
-class LibrosUpdate (LoginRequiredMixin,UpdateView):
-    model = Libros
-    success_url = '/librolist'
-    fields = ['nombre', 'autor', 'genero']
+def LibrosUpdate (request, libros_id):
+    libro1 = Libros.objects.get (id=libros_id)
+    if request.method == 'POST':
+        formulario = CrearLibrosForm (request.POST)
+        if formulario.is_valid():
+            formulario_limpio = formulario.cleaned_data
+
+            libro1.nombre = formulario_limpio['nombre']
+            libro1.autor = formulario_limpio ['autor']
+            libro1.genero = formulario_limpio['genero']
+            
+            libro1.save()
+        return render (request, 'index.html')
+    else:
+        formulario = CrearLibrosForm (initial={'nombre': Libros.nombre, 'autor': Libros.autor, 'genero': Libros.genero})
+    return render (request, 'list_libros.html', {'formulario': CrearLibrosForm})
 
 class LibrosDelete (LoginRequiredMixin, DeleteView):
     model = Libros
@@ -116,11 +128,21 @@ class SeriesList (LoginRequiredMixin,ListView):
     model = Series
     template_name = 'list_series.html'
 
-class SeriesUpdate (LoginRequiredMixin,UpdateView):
-    model = Series
-    success_url = 'List Series'
-    fields = ['nombre', 'genero']
+def SeriesUpdate (request, series_id):
+    serie = Series.objects.get (id=series_id)
+    if request.method == 'POST':
+        formulario = CrearSeriesForm(request.POST)
+        if formulario.is_valid():
+            formulario_limpio = formulario.cleaned_data
 
+            serie.nombre = formulario_limpio['nombre']
+            serie.genero = formulario_limpio['genero']
+
+            serie.save()
+            return render (request, 'index.html')
+    else:
+        formulario = CrearSeriesForm (initial={'nombre': serie.nombre, 'genero': serie.genero})
+    return render (request, 'list_series.html', {'formulario': CrearSeriesForm})
 class SeriesDelete (LoginRequiredMixin, DeleteView):
     model = Series
     template_name = 'delete_serie.html'
@@ -133,10 +155,21 @@ class PeliculasList (LoginRequiredMixin,ListView):
     model = Peliculas
     template_name = 'list_peliculas.html'
 
-class PeliculasUpdate (LoginRequiredMixin,UpdateView):
-    model = Peliculas
-    success_url = 'List Peliculas'
-    fields = ['nombre', 'genero']
+def PeliculasUpdate (request, peliculas_id):
+    pelicula = Peliculas.objects.get (id=peliculas_id)
+    if request.method == 'POST':
+        formulario = CrearPeliculasForm(request.POST)
+        if formulario.is_valid():
+            formulario_limpio = formulario.cleaned_data
+
+            pelicula.nombre = formulario_limpio['nombre']
+            pelicula.genero = formulario_limpio['genero']
+
+            pelicula.save()
+            return render (request, 'index.html')
+    else:
+        formulario = CrearPeliculasForm (initial={'nombre': pelicula.nombre, 'genero': pelicula.genero})
+    return render (request, 'list_peliculas.html', {'formulario': CrearPeliculasForm})
 
 class PeliculasDelete (LoginRequiredMixin, DeleteView):
     model = Peliculas
@@ -149,10 +182,22 @@ class JuegosList (LoginRequiredMixin,ListView):
     model = Juegos
     template_name = 'list_juegos.html'
 
-class JuegosUpdate (LoginRequiredMixin,UpdateView):
-    model = Juegos
-    success_url = 'List Juegos'
-    fields = ['nombre', 'creador', 'genero']
+def JuegosUpdate (request, juegos_id):
+    juego = Juegos.objects.get (id=juegos_id)
+    if request.method == 'POST':
+        formulario = CrearJuegosForm(request.POST)
+        if formulario.is_valid():
+            formulario_limpio = formulario.cleaned_data
+
+            juego.nombre = formulario_limpio['nombre']
+            juego.creador = formulario_limpio ['creador']
+            juego.genero = formulario_limpio['genero']
+
+            juego.save()
+            return render (request, 'index.html')
+    else:
+        formulario = CrearJuegosForm (initial={'nombre': juego.nombre, 'creador': juego.creador, 'genero': juego.genero})
+    return render (request, 'list_juegos.html', {'formulario': CrearJuegosForm})
 
 class JuegosDelete (LoginRequiredMixin, DeleteView):
     model = Juegos

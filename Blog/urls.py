@@ -39,12 +39,12 @@ urlpatterns = [
     path('eliminarserie/<pk>', SeriesDelete.as_view(), name = 'Eliminar Serie'),
     path('eliminarpelicula/<pk>', PeliculasDelete.as_view(), name = 'Eliminar Pelicula'),
 
-    path('actualizarlibro/<pk>', LibrosUpdate.as_view(), name = 'Actualizar Libro'),
-    path('actualizarjuego/<pk>', JuegosUpdate.as_view(), name = 'Actualizar Juego'),
-    path('actualizarserie/<pk>', SeriesUpdate.as_view(), name = 'Actualizar Serie'),
-    path('actualizarpelicula/<pk>', PeliculasUpdate.as_view(), name = 'Actualizar Pelicula'),
+    path('actualizarlibro/<libros_id>', LibrosUpdate, name = 'Actualizar Libro'),
+    path('actualizarjuego/<juegos_id>', JuegosUpdate, name = 'Actualizar Juego'),
+    path('actualizarserie/<series_id>', SeriesUpdate, name = 'Actualizar Serie'),
+    path('actualizarpelicula/<peliculas_id>', PeliculasUpdate, name = 'Actualizar Pelicula'),
 
-    path('librolist', LibrosList.as_view(), name = 'List Libros'),
+    path('libroslist', LibrosList.as_view(), name = 'List Libros'),
     path('juegoslist', JuegosList.as_view(), name = 'List Juegos'),
     path('serieslist', SeriesList.as_view(), name = 'List Series'),
     path('peliculaslist', PeliculasList.as_view(), name = 'List Peliculas'),
