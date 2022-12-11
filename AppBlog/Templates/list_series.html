@@ -7,12 +7,16 @@
         <p> id: {{Series.id}} ;
         Nombre: {{Series.nombre}} ; Genero: {{Series.genero}}</p>
         
+        {% if request.user == post.owner or request.user.is_superuser%}
         <button>
             <a href="{% url 'Actualizar Serie' Series.id %}">Editar</a>
         </button>
+
         <button>
-        <a href="{% url 'Eliminar Serie' Series.id %}">Eliminar</a>
+            <a href="{% url 'Eliminar Serie' Series.id %}">Eliminar</a>
         </button>
+
+        {% endif %}
 
     {% endfor %}
 

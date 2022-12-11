@@ -98,13 +98,12 @@ def editar_usuario(request):
 
 class LibrosList (LoginRequiredMixin,ListView):
     model = Libros
-    template_name = 'libros_list.html'
+    template_name = 'list_libros.html'
 
 class LibrosUpdate (LoginRequiredMixin,UpdateView):
     model = Libros
-    form_class = CrearLibrosForm
-    template_name = 'crear_libro.html'
-    success_url = reverse_lazy ('List Libros')
+    success_url = 'List Libros'
+    fields = ['nombre', 'autor', 'genero']
 
 class LibrosDelete (LoginRequiredMixin, DeleteView):
     model = Libros
@@ -115,13 +114,12 @@ class LibrosDelete (LoginRequiredMixin, DeleteView):
 
 class SeriesList (LoginRequiredMixin,ListView):
     model = Series
-    template_name = 'series_list.html'
+    template_name = 'list_series.html'
 
 class SeriesUpdate (LoginRequiredMixin,UpdateView):
     model = Series
-    form_class = CrearSeriesForm
-    template_name = 'crear_serie.html'
-    success_url = reverse_lazy ('List Series')
+    success_url = 'List Series'
+    fields = ['nombre', 'genero']
 
 class SeriesDelete (LoginRequiredMixin, DeleteView):
     model = Series
@@ -133,13 +131,12 @@ class SeriesDelete (LoginRequiredMixin, DeleteView):
 
 class PeliculasList (LoginRequiredMixin,ListView):
     model = Peliculas
-    template_name = 'peliculas_list.html'
+    template_name = 'list_peliculas.html'
 
 class PeliculasUpdate (LoginRequiredMixin,UpdateView):
     model = Peliculas
-    form_class = CrearPeliculasForm
-    template_name = 'crear_pelicula.html'
-    success_url = reverse_lazy ('List Peliculas')
+    success_url = 'List Peliculas'
+    fields = ['nombre', 'genero']
 
 class PeliculasDelete (LoginRequiredMixin, DeleteView):
     model = Peliculas
@@ -150,13 +147,12 @@ class PeliculasDelete (LoginRequiredMixin, DeleteView):
 
 class JuegosList (LoginRequiredMixin,ListView):
     model = Juegos
-    template_name = 'juegos_list.html'
+    template_name = 'list_juegos.html'
 
 class JuegosUpdate (LoginRequiredMixin,UpdateView):
     model = Juegos
-    form_class = CrearJuegosForm
-    template_name = 'crear_juego.html'
-    success_url = reverse_lazy ('List Juegos')
+    success_url = 'List Juegos'
+    fields = ['nombre', 'creador', 'genero']
 
 class JuegosDelete (LoginRequiredMixin, DeleteView):
     model = Juegos
@@ -177,97 +173,3 @@ class Login (LoginView):
 
 class Logout (LoginRequiredMixin,LogoutView):
     template_name = 'logout.html'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def actualizar_serie (request, serie_id):
-    serie = Series.objects.get (id=serie_id)
-    if request.method == 'POST':
-        formulario = CrearSeriesForm(request.POST)
-        if formulario.is_valid():
-            formulario_limpio = formulario.cleaned_data
-
-            serie.nombre = formulario_limpio['nombre']
-            serie.genero = formulario_limpio['genero']
-
-            serie.save()
-            return render (request, 'index.html')
-    else:
-        formulario = CrearSeriesForm (initial={'nombre': serie.nombre, 'genero': serie.genero})
-    return render (request, 'mostrar_series.html', {'formulario': CrearSeriesForm})
-
-def actualizar_pelicula (request, pelicula_id):
-    pelicula = Peliculas.objects.get (id=pelicula_id)
-    if request.method == 'POST':
-        formulario = CrearPeliculasForm(request.POST)
-        if formulario.is_valid():
-            formulario_limpio = formulario.cleaned_data
-
-            pelicula.nombre = formulario_limpio['nombre']
-            pelicula.genero = formulario_limpio['genero']
-
-            pelicula.save()
-            return render (request, 'index.html')
-    else:
-        formulario = CrearPeliculasForm (initial={'nombre': pelicula.nombre, 'genero': pelicula.genero})
-    return render (request, 'mostrar_peliculas.html', {'formulario': CrearPeliculasForm})
-
-def actualizar_juego (request, juego_id):
-    juego = Juegos.objects.get (id=juego_id)
-    if request.method == 'POST':
-        formulario = CrearJuegosForm(request.POST)
-        if formulario.is_valid():
-            formulario_limpio = formulario.cleaned_data
-
-            juego.nombre = formulario_limpio['nombre']
-            juego.creador = formulario_limpio ['creador']
-            juego.genero = formulario_limpio['genero']
-
-            juego.save()
-            return render (request, 'index.html')
-    else:
-        formulario = CrearJuegosForm (initial={'nombre': juego.nombre, 'creador': juego.creador, 'genero': juego.genero})
-    return render (request, 'mostrar_juegos.html', {'formulario': CrearJuegosForm})
-
-def actualizar_libro (request, libro_id):
-    libro = Libros.objects.get (id=libro_id)
-    if request.method == 'POST':
-        formulario = CrearLibrosForm(request.POST)
-        if formulario.is_valid():
-            formulario_limpio = formulario.cleaned_data
-
-            libro.nombre = formulario_limpio['nombre']
-            libro.autor = formulario_limpio ['autor']
-            libro.genero = formulario_limpio['genero']
-
-            libro.save()
-            return render (request, 'index.html')
-    else:
-        formulario = CrearLibrosForm (initial={'nombre': libro.nombre, 'autor': libro.autor, 'genero': libro.genero})
-    return render (request, 'mostrar_libros.html', {'formulario': CrearLibrosForm})
