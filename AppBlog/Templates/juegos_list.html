@@ -1,0 +1,28 @@
+<h1>Estos son los juegos favoritos de la gente!</h1>
+
+<tbody>
+    {% if object_list %}
+    {% for Juegos in object_list %}
+
+        <p> id: {{Juegos.id}} ;
+        Nombre: {{Juegos.nombre}} ; Creador: {{Juegos.creador}} ; Genero: {{Juegos.genero}}</p>
+        
+        <button>
+            <a href="{% url 'Actualizar Juego'  Juegos.id %}">Editar</a>
+        </button>
+        <button>
+            <a href="{% url 'Eliminar Juego'  Juegos.id %}">Eliminar</a>
+        </button>
+
+    {% endfor %}
+
+    {% else %}
+    
+    <p> No hay nada todavía, ¿Querrías agregar algo? Vuelve a la pagina principal, ve a la sección de Agregar Juegos y añade uno. </p>
+
+    {% endif %}
+
+    <br><br>
+    <button>
+        <a href='{% url 'Home' %}' >Volver a la pagina principal</a>
+    </button>

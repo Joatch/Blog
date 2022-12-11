@@ -29,12 +29,15 @@
                 {% if request.user.is_authenticated %}
                 <a class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}}!</a>
 
+
                 <img src='{{url}}' alt=''>
 
                 <a class="navbar-brand" href="{% url 'Logout' %}" >Cerrar Sesión</a>
                 <a class="navbar-brand" href="{% url 'Editar Usuario' %}" >Editar Usuario</a>
                 {% endif %}
 
+                <a class="navbar-brand" href="{% url 'About' %}" >About This!</a>
+                
                 
             </div>
         </nav>
@@ -46,7 +49,8 @@
                         <div class="text-center text-white">
                             <!-- Page heading-->
                             <h1 class="mb-5"> Bienvenido {{user.username}}!</h1>
-                            <h2 class="mb-5">Este es el blog personal de Joaquin Anton Leporace. Esto es como Twitter, ¡pero mejor!</h2>
+                            <h3 class="mb-5"> Elige un tipo de entretenimiento para agregar, o mirá lo que puso la gente más abajo!</h3>
+                            
                             <!-- Signup form-->
                             <a class="btn btn-primary" href="{% url 'Agregar Libro' %}" >Agregar Libro</a>
                             <a class="btn btn-primary" href="{% url 'Agregar Juego' %}" >Agregar Juego</a>
@@ -88,13 +92,11 @@
                         <ul class="list-inline mb-2">
 
                         </ul> 
-                        <p class="text-muted small mb-4 mb-lg-0">El proposito de esta pagina es que uno pueda anotar sus series favoritas, para que uno no se olvide de todo lo que ve, lea o juega. De esta forma, cuando te pregunten si conoces algun juego, libro, serie o película interesante, uno pueda tener una respuesta. ¡Página perfecta para los olvidadizos! </p>
-                        <a class="btn btn-primary" href="{% url 'Mostrar Libros' %}" >Mostrar Libro</a>
-                        <div class='container'>
-                            <a class='btn btn-primary' href='{% url 'List Libros' %}'> Mostrar cursitos</a>
-                        <a class="btn btn-primary" href="{% url 'Mostrar Juegos' %}" >Mostrar Juego</a>
-                        <a class="btn btn-primary" href="{% url 'Mostrar Series' %}" >Mostrar Serie</a>
-                        <a class="btn btn-primary" href="{% url 'Mostrar Peliculas' %}" >Mostrar Pelicula</a>
+                        <p class="text-muted small mb-4 mb-lg-0"></p>
+                        <a class='btn btn-primary' href="{% url 'List Libros' %}"> Mostrar Libros</a>
+                        <a class="btn btn-primary" href="{% url 'List Juegos' %}" >Mostrar Juego</a>
+                        <a class="btn btn-primary" href="{% url 'List Series' %}" >Mostrar Serie</a>
+                        <a class="btn btn-primary" href="{% url 'List Peliculas' %}" >Mostrar Pelicula</a>
                     </div>
                             </li>
                         </ul>

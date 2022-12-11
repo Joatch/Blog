@@ -1,0 +1,28 @@
+<h1>Estos son las peliculas favoritas de la gente!</h1>
+
+<tbody>
+    {% if object_list %}
+    {% for Peliculas in object_list %}
+
+        <p> id: {{Peliculas.id}} ;
+        Nombre: {{Peliculas.nombre}} ; Genero: {{Peliculas.genero}}</p>
+        
+        <button>
+            <a href="{% url 'Actualizar Pelicula'  Peliculas.id %}">Editar</a>
+        </button>
+        <button>
+            <a href="{% url 'Eliminar Pelicula'  Peliculas.id %}">Eliminar</a>
+        </button>
+
+    {% endfor %}
+
+    {% else %}
+    
+    <p> No hay nada todavía, ¿Querrías agregar algo? Vuelve a la pagina principal, ve a la sección de Agregar Peliculas y añade uno. </p>
+
+    {% endif %}
+
+    <br><br>
+    <button>
+        <a href='{% url 'Home' %}' >Volver a la pagina principal</a>
+    </button>

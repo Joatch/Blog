@@ -32,21 +32,24 @@ urlpatterns = [
     path('signup', SignUp.as_view(), name='Sign Up'),
     path('login', Login.as_view(), name='Login'),
     path('logout', Logout.as_view(), name='Logout'),
-    path('mostrarlibros', mostrar_libros, name = 'Mostrar Libros'),
-    path('mostrarseries', mostrar_series, name = 'Mostrar Series'),
-    path('mostrarpeliculas', mostrar_peliculas, name = 'Mostrar Peliculas'),
-    path('mostrarjuegos', mostrar_juegos, name = 'Mostrar Juegos'),
     path('editarusuario', editar_usuario, name = 'Editar Usuario'),
-    path('eliminarjuego/<juego_id>', eliminar_juego, name = 'Eliminar Juego'),
-    path('eliminarserie/<serie_id>', eliminar_serie, name = 'Eliminar Serie'),
-    path('eliminarpelicula/<pelicula_id>', eliminar_pelicula, name = 'Eliminar Pelicula'),
-    path('eliminarlibro/<libro_id>', eliminar_libro, name = 'Eliminar Libro'),
-    path('actualizar_libro/<libro_id>', actualizar_libro, name = 'Actualizar Libro'),
-    path('actualizar_pelicula/<pelicula_id>', actualizar_pelicula, name = 'Actualizar Pelicula'),
-    path('actualizar_serie/<serie_id>', actualizar_serie, name = 'Actualizar Serie'),
-    path('actualizar_juego/<juego_id>', actualizar_juego, name = 'Actualizar Juego'),
+
+    path('eliminarlibro/<pk>', LibrosDelete.as_view(), name = 'Eliminar Libro'),
+    path('eliminarjuego/<pk>', JuegosDelete.as_view(), name = 'Eliminar Juego'),
+    path('eliminarserie/<pk>', SeriesDelete.as_view(), name = 'Eliminar Serie'),
+    path('eliminarpelicula/<pk>', PeliculasDelete.as_view(), name = 'Eliminar Pelicula'),
+
+    path('actualizar_libro/<pk>', LibrosUpdate.as_view(), name = 'Actualizar Libro'),
+    path('actualizar_juego/<pk>', JuegosUpdate.as_view(), name = 'Actualizar Juego'),
+    path('actualizar_serie/<pk>', SeriesUpdate.as_view(), name = 'Actualizar Serie'),
+    path('actualizar_pelicula/<pk>', PeliculasUpdate.as_view(), name = 'Actualizar Pelicula'),
+
     path('librolist', LibrosList.as_view(), name = 'List Libros'),
-    path('librodetalle/<pk>', LibrosList.as_view(), name = 'Detail Libros'),
+    path('juegoslist', JuegosList.as_view(), name = 'List Juegos'),
+    path('serieslist', SeriesList.as_view(), name = 'List Series'),
+    path('peliculaslist', PeliculasList.as_view(), name = 'List Peliculas'),
+
+    path('About', About, name = 'About'),
 ]
 
 urlpatterns += static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

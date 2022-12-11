@@ -1,15 +1,29 @@
 <h1>Estos son los libros favoritos de la gente!</h1>
 
-{% for Libros in object_list %}
+<tbody>
+    {% if object_list %}
+    {% for Libros in object_list %}
 
-    <ul>
-        <li>
-            {{libros}}
+        <p> id: {{Libros.id}} ; 
+        Nombre: {{Libros.nombre}} ; Autor: {{Libros.autor}} ; Genero: {{Libros.genero}} </p>
+        
+        <button>
+            <a href="{% url 'Actualizar Libro'  Libros.id %}">Editar</a>
+        </button>
+        
+        <button>
+            <a href="{% url 'Eliminar Libro'  Libros.id %}">Eliminar</a>
+        </button>
+    
+    {% endfor %}
 
-            <button>
-                <a href='{% url 'Eliminar Libro' libro_id=Libros.id %}' >Eliminar</a>
-            </button>
-        </li>
-    </ul>
+    {% else %}
+    
+    <p> No hay nada todavía, ¿Querrías agregar algo? Vuelve a la pagina principal, ve a la sección de Agregar Libros y añade uno. </p>
 
-{% endfor %}
+    {% endif %}
+
+    <br><br>
+    <button>
+        <a href='{% url 'Home' %}' >Volver a la pagina principal</a>
+    </button>
