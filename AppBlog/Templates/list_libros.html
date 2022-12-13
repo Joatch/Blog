@@ -4,8 +4,7 @@
     {% if object_list %}
     {% for Libros in object_list %}
 
-        <p> id: {{Libros.id}} ; 
-        Nombre: {{Libros.nombre}} ; Autor: {{Libros.autor}} ; Genero: {{Libros.genero}} </p>
+        <p> El nombre es {{Libros.nombre}}, cuyo autor es {{Libros.autor}} con género {{Libros.genero}}.</p>
         
         {% if request.user == post.owner or request.user.is_superuser%}
         <button>

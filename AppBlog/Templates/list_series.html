@@ -4,8 +4,7 @@
     {% if object_list %}
     {% for Series in object_list %}
 
-        <p> id: {{Series.id}} ;
-        Nombre: {{Series.nombre}} ; Genero: {{Series.genero}}</p>
+        <p> El nombre es {{Series.nombre}}, cuyo género es {{Series.genero}}.</p>
         
         {% if request.user == post.owner or request.user.is_superuser%}
         <button>

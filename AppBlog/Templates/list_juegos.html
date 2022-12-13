@@ -4,8 +4,7 @@
     {% if object_list %}
     {% for Juegos in object_list %}
 
-        <p> id: {{Juegos.id}} ;
-        Nombre: {{Juegos.nombre}} ; Creador: {{Juegos.creador}} ; Genero: {{Juegos.genero}}</p>
+        <p> El nombre es {{Juegos.nombre}}, cuyo creador es {{Juegos.creador}} con género {{Juegos.genero}}.</p>
         
         {% if request.user == post.owner or request.user.is_superuser%}
         <button>

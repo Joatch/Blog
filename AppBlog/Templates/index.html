@@ -27,7 +27,7 @@
                 {% endif %}
 
                 {% if request.user.is_authenticated %}
-                <a class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}}!</a>
+                <a class="text-muted small mb-4 mb-lg-0"> ¡Hola, {{user.username}}!</a>
 
 
                 <img src='{{url}}' alt=''>
@@ -48,8 +48,8 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5"> Bienvenido {{user.username}}!</h1>
-                            <h3 class="mb-5"> Elige un tipo de entretenimiento para agregar, o mirá lo que puso la gente más abajo!</h3>
+                            <h1 class="mb-5"> ¡Bienvenido {{user.username}}!</h1>
+                            <h3 class="mb-5"> ¡Elige un tipo de entretenimiento para agregar, o mirá lo que puso la gente más abajo!</h3>
                             
                             <!-- Signup form-->
                             <a class="btn btn-primary" href="{% url 'Agregar Libro' %}" >Agregar Libro</a>
