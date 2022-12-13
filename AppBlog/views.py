@@ -1,15 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from AppBlog.models import *
 from AppBlog.forms import *
 from AppBlog.forms import *
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView 
-from django.shortcuts import redirect
+from django.http import HttpResponseRedirect
 
 
 

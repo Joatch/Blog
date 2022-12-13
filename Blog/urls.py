@@ -49,7 +49,7 @@ urlpatterns = [
     path('serieslist', SeriesList.as_view(), name = 'List Series'),
     path('peliculaslist', PeliculasList.as_view(), name = 'List Peliculas'),
 
-    path('About', About, name = 'About'),
+    path('About', About, name = 'About')
 ]
 
 urlpatterns += static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

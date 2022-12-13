@@ -5,7 +5,7 @@
     {% for Libros in object_list %}
 
         <p> El nombre es {{Libros.nombre}}, cuyo autor es {{Libros.autor}} con género {{Libros.genero}}.</p>
-        
+
         {% if request.user == post.owner or request.user.is_superuser%}
         <button>
             <a href="{% url 'Actualizar Libro'  Libros.id %}">Editar</a>
